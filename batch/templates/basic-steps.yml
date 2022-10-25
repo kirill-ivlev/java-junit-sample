@@ -1,0 +1,45 @@
+steps:
+- task: BatchScript@1
+  displayName: 'Script from file'
+  inputs:
+    filename: 'src/batch/scripts/test.bat'
+
+    
+- task: BatchScript@1
+  displayName: 'Script from file with args'
+  inputs:
+    filename: 'src/batch/scripts/testWithArgs.bat'
+    arguments: '1111 secondArgument'
+
+- task: BatchScript@1
+  displayName: 'Script from file with throw error into stderr'
+  inputs:
+    filename: 'src/batch/scripts/testWithStderr.bat'
+    failOnStandardError: false
+
+# Tests for Modify Environment option
+# Case 1 - Environment variable TestVar is set only for current task and should be unavailable for subsequent tasks
+- task: BatchScript@1
+  displayName: 'Set TestVar environment variable only for current task'
+  inputs:
+    filename: 'src/batch/scripts/setEnvVar.bat'
+    arguments: 'testvalue'
+
+- task: BatchScript@1
+  displayName: 'Check value of TestVar environment variable'
+  inputs:
+    filename: 'src/batch/scripts/checkEnvVarValue.bat'
+
+# Case 2 - Environment variable TestVar is set for current and subsequent tasks
+- task: BatchScript@1
+  displayName: 'Set TestVar environment variable for current and subsequent tasks'
+  inputs:
+    filename: 'src/batch/scripts/setEnvVar.bat'
+    arguments: 'testvalue'
+    modifyEnvironment: true
+
+- task: BatchScript@1
+  displayName: 'Check value of TestVar environment variable'
+  inputs:
+    filename: 'src/batch/scripts/checkEnvVarValue.bat'
+    arguments: 'testvalue'
