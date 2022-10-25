@@ -8,7 +8,7 @@ jobs:
   pool:
     vmImage: windows-latest
   steps:
-  - template: batch/templates/basic-steps.yml
+  - template: src/batch/templates/basic-steps.yml
 
 - job: 'MavenTest'
   pool:
