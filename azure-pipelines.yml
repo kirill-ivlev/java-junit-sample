@@ -13,15 +13,12 @@ jobs:
 - job: 'MavenTest'
   strategy:
     matrix:
-      WIN:
-        pool:
-          vmImage: windows-latest
-      LIN:
-        pool:
-          vmImage: ubuntu-latest
-      MAC:
-        pool:
-          vmImage: macos-latest
+      linux:
+        imageName: 'ubuntu-latest'
+      mac:
+        imageName: 'macOS-latest'
+      windows:
+        imageName: 'windows-latest'
 
   steps:
   - task: Maven@3
