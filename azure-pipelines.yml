@@ -11,8 +11,17 @@ jobs:
   - template: src/batch/templates/basic-steps.yml
 
 - job: 'MavenTest'
-  pool:
-    vmImage: windows-latest
+  strategy:
+    matrix:
+      WIN:
+        pool:
+          vmImage: windows-latest
+      LIN:
+        pool:
+          vmImage: ubuntu-latest
+      MAC:
+        pool:
+          vmImage: macos-latest
 
   steps:
   - task: Maven@3
