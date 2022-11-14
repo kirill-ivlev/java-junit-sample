@@ -39,12 +39,12 @@ jobs:
 
   - task: PublishPipelineArtifact@1
     inputs:
-      targetPath: '$(Pipeline.Workspace)\s\pom.xml'
-      artifact: 'Artifact1'
+      targetPath: '$(Pipeline.Workspace)/s/pom.xml'
+      artifact: 'Artifact1$(imageName)'
       publishLocation: 'pipeline'
 
   - task: DownloadPipelineArtifact@2
     inputs:
       buildType: 'current'
-      artifactName: 'Artifact1'
+      artifactName: 'Artifact1$(imageName)'
       targetPath: '$(Pipeline.Workspace)'
