@@ -49,14 +49,14 @@ jobs:
       artifactName: 'Artifact-$(imageName)'
       targetPath: '$(Pipeline.Workspace)'
 
-  - task: DownloadPackage@1
-    inputs:
-      packageType: 'npm'
-      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
-      view: '4e4e8545-8f17-43b5-96e7-7bd672f8cebd'
-      definition: 'a4b9c615-31e5-4a66-9567-8b05ea4e9eca'
-      version: '1.1.0'
-      downloadPath: '$(System.ArtifactsDirectory)'
+#  - task: DownloadPackage@1
+#    inputs:
+#      packageType: 'npm'
+#      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
+#      view: '4e4e8545-8f17-43b5-96e7-7bd672f8cebd'
+#      definition: 'a4b9c615-31e5-4a66-9567-8b05ea4e9eca'
+#      version: '1.1.0'
+#      downloadPath: '$(System.ArtifactsDirectory)'
 
   - task: DownloadPackageLiliya@1
     inputs:
