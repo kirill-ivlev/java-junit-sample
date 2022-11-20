@@ -4,10 +4,17 @@
 # https://aka.ms/yaml
 
 trigger: none
+parameters:
+- name: version
+  displayName: Version of task used (0 or 1)
+  type: number
+  default: 1
 
 jobs:
 
-- job: 'DownloadPackageTest_MS_Hosted'
+- job: 'V1_DownloadPackageTest_MS_Hosted'
+  displayName: 'V1 DownloadPackage MS-Hosted'
+  condition: ${{eq(parameters.version, 1)}}
   strategy:
     matrix:
       linux:
@@ -56,6 +63,8 @@ jobs:
       downloadPath: '$(System.ArtifactsDirectory)/L2'
 
 - job: 'DownloadPackageTest_Self_Hosted'
+  displayName: 'V1 DownloadPackage Self-Hosted'
+  condition: ${{eq(parameters.version, 1)}}
   pool: Default
 
   steps:
@@ -75,4 +84,23 @@ jobs:
       definition: '41b41b5d-742a-472c-af6c-7fe1518dfaf1'
       version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
-  
+
+- job: 'DownloadPackageV0_Self_Hosted'
+  displayName: 'V0 DownloadPackage Self-Hosted'
+  condition: ${{eq(parameters.version, 0)}}
+  pool: Default
+  steps:
+  - task: DownloadPackage@0
+    displayName: 'Download Package V0'
+    inputs:
+      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
+      definition: '41b41b5d-742a-472c-af6c-7fe1518dfaf1'
+      version: 2.0.123
+      downloadPath: '$(System.ArtifactsDirectory)/L2'
+  - task: DownloadPackage@0
+    displayName: 'Download Package V0'
+    inputs:
+      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
+      definition: 'a4b9c615-31e5-4a66-9567-8b05ea4e9eca'
+      version: 1.0.3
+      downloadPath: '$(System.ArtifactsDirectory)/L1'
