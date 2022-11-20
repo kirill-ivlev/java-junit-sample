@@ -8,7 +8,7 @@ parameters:
 - name: version
   displayName: Version of task used (0 or 1)
   type: number
-  default: 1
+  default: 0
 
 jobs:
 
