@@ -12,8 +12,8 @@ parameters:
 
 jobs:
 
-- job: 'V1_DownloadPackageTest_MS_Hosted'
-  displayName: 'V1 DownloadPackage MS-Hosted'
+- job: 'DownloadPackageTest_MS_Hosted'
+  displayName: 'DownloadPackage MS-Hosted'
   strategy:
     matrix:
       linux:
@@ -82,7 +82,7 @@ jobs:
       downloadPath: '$(System.ArtifactsDirectory)/L3'
 
 - job: 'DownloadPackageTest_Self_Hosted'
-  displayName: 'V1 DownloadPackage Self-Hosted'
+  displayName: 'DownloadPackage Self-Hosted'
   pool: Default
 
   steps:
