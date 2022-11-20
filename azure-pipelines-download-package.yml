@@ -100,7 +100,7 @@ jobs:
   - task: DownloadPackage@0
     displayName: 'Download Package V0'
     inputs:
-      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
+      feed: '/cbd9f23e-c788-4d0a-babd-4d154e451333'
       definition: 'a4b9c615-31e5-4a66-9567-8b05ea4e9eca'
-      version: 1.0.3
+      version: '1.0.3'
       downloadPath: '$(System.ArtifactsDirectory)/L1'
