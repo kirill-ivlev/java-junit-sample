@@ -93,9 +93,9 @@ jobs:
   - task: DownloadPackage@0
     displayName: 'Download Package V0'
     inputs:
-      feed: '3e0295ab-3dd6-43ce-86af-16273f5f1b23/733a8840-9cef-412b-9bb0-8947825ed8b7'
-      definition: '41b41b5d-742a-472c-af6c-7fe1518dfaf1'
-      version: 2.0.123
+      feed: '/cbd9f23e-c788-4d0a-babd-4d154e451333'
+      definition: '3901d1f7-c35a-47bd-bbf8-d884cb27c9c3'
+      version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
   - task: DownloadPackage@0
     displayName: 'Download Package V0'
