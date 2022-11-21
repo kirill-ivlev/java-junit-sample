@@ -64,7 +64,7 @@ jobs:
       definition: '41b41b5d-742a-472c-af6c-7fe1518dfaf1'
       version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
-  - task: DownloadPackageLisa@0
+  - task: DownloadPackage@0
     condition: ${{eq(parameters.version, 0)}}
     displayName: 'Download Package V0 - Dapper'
     inputs:
@@ -72,7 +72,7 @@ jobs:
       definition: '3901d1f7-c35a-47bd-bbf8-d884cb27c9c3'
       version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
-  - task: DownloadPackageLisa@0
+  - task: DownloadPackage@0
     condition: ${{eq(parameters.version, 0)}}
     displayName: 'Download Package V0 - Serilog'
     inputs:
@@ -106,7 +106,7 @@ jobs:
       definition: '41b41b5d-742a-472c-af6c-7fe1518dfaf1'
       version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
-  - task: DownloadPackageLisa@0
+  - task: DownloadPackage@0
     condition: ${{eq(parameters.version, 0)}}
     displayName: 'Download Package V0 - Dapper'
     inputs:
@@ -114,7 +114,7 @@ jobs:
       definition: '3901d1f7-c35a-47bd-bbf8-d884cb27c9c3'
       version: '2.0.123'
       downloadPath: '$(System.ArtifactsDirectory)/L2'
-  - task: DownloadPackageLisa@0
+  - task: DownloadPackage@0
     condition: ${{eq(parameters.version, 0)}}
     displayName: 'Download Package V0 - Serilog'
     inputs:
