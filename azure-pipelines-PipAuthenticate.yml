@@ -23,5 +23,4 @@ steps:
     artifactFeeds: Playground/TestFeed
 
 # Use command line tool to 'pip install'.
-- script: |
-    pip install numpy
+- script: pip install numpy
