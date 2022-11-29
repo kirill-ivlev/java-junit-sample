@@ -5,22 +5,45 @@
 
 trigger: none
 
-pool:
-  vmImage: ubuntu-latest
+jobs:
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- job: 'MS_Hosted'
+  displayName: 'MS-Hosted'
+  strategy:
+    matrix:
+      linux:
+        imageName: 'ubuntu-latest'
+      mac:
+        imageName: 'macOS-latest'
+      windows:
+        imageName: 'windows-latest'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  steps:
 
-- task: PipAuthenticate@0
-  displayName: 'Pip Authenticate'
-  inputs:
-    artifactFeeds: Playground/TestFeed
+  - task: PipAuthenticate@0
+    displayName: 'Pip Authenticate'
+    inputs:
+      artifactFeeds: 'Playground/TestFeed, v-lsabitova'
 
-# Use command line tool to 'pip install'.
-- script: pip install numpy
+  # Use command line tool to 'pip install'.
+  - script: pip install numpy
+
+  # Use command line tool to 'pip install'.
+  - script: pip install random
+
+- job: 'Self_Hosted'
+  displayName: 'Self-Hosted'
+  pool: Default
+
+  steps:
+
+  - task: PipAuthenticate@0
+    displayName: 'Pip Authenticate'
+    inputs:
+      artifactFeeds: 'Playground/TestFeed, v-lsabitova'
+
+  # Use command line tool to 'pip install'.
+  - script: pip install numpy
+
+  # Use command line tool to 'pip install'.
+  - script: pip install random
