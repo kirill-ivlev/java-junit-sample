@@ -29,7 +29,7 @@ jobs:
   - script: pip install numpy
 
   # Use command line tool to 'pip install'.
-  - script: pip install random
+  - script: pip install git
 
 - job: 'Self_Hosted'
   displayName: 'Self-Hosted'
@@ -46,4 +46,4 @@ jobs:
   - script: pip install numpy
 
   # Use command line tool to 'pip install'.
-  - script: pip install random
+  - script: pip install git
