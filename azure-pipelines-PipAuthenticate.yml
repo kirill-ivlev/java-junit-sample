@@ -21,11 +21,11 @@ jobs:
   steps:
 
   - task: PipAuthenticate@0
+    env:
+      AGENT_USE_NODE10: true
     displayName: 'Pip Authenticate'
     inputs:
       artifactFeeds: 'Playground/TestFeed, v-lsabitova'
-    env:
-      AGENT_USE_NODE10: true
 
   # Use command line tool to 'pip install'.
   - script: pip install numpy
@@ -40,6 +40,8 @@ jobs:
   steps:
 
   - task: PipAuthenticate@0
+    env:
+      AGENT_USE_NODE10: true
     displayName: 'Pip Authenticate'
     inputs:
       artifactFeeds: 'Playground/TestFeed, v-lsabitova'
