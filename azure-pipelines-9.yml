@@ -27,12 +27,12 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
-    artifact: 'Artifact'
+    artifact: 'Artifact+98437'
     publishLocation: 'pipeline'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop'
+    ArtifactName: 'drop+9234857'
     publishLocation: 'Container'
 
