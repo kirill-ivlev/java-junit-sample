@@ -4,7 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 trigger: none
 
-pool: Default
+pool:
+  imageName: 'ubuntu-latest'
 
 steps:
 - task: Maven@3
