@@ -50,5 +50,11 @@ steps:
 - task: LiliaPublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'Liliadrop+93253857'
+    ArtifactName: 'Liliadrop+9234857'
+    publishLocation: 'Container'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: 'drop9234857'
     publishLocation: 'Container'
