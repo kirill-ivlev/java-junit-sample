@@ -5,6 +5,8 @@
 trigger: none
 
 pool: Default
+  vmName: 'Telem_13.02'
+
 #    vmImage: 'ubuntu-latest'
 
 steps:
