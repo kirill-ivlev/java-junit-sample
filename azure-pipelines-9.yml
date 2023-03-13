@@ -6,7 +6,8 @@ trigger: none
 
 pool: 
   name: Default
-  vmName: 'Telem_13.02'
+  demands:
+  - Agent.Name -equals 'Telem_13.02'
 
 #    vmImage: 'ubuntu-latest'
 
