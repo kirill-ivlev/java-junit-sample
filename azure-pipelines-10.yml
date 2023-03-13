@@ -28,7 +28,27 @@ steps:
 #    testResultsFormat: 'JUnit'
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
+- task: PublishBuildArtifacts@1
+name: 'PublishBuildArtifacts@1 drop+9234857'
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: '1_drop+9234857'
+    publishLocation: 'Container'
+
+- task: LiliaPublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: 'Liliadrop+9234857'
+    publishLocation: 'Container'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: 'drop9234857'
+    publishLocation: 'Container'
+
 - task: PublishPipelineArtifact@1
+name: 'PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'Artifact+98437'
