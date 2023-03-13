@@ -36,49 +36,33 @@ name: 'PublishBuildArtifacts@1 drop+9234857'
     publishLocation: 'Container'
 
 - task: LiliaPublishBuildArtifacts@1
+name: 'LiliaPublishBuildArtifacts@1 Liliadrop+9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'Liliadrop+9234857'
+    ArtifactName: '2_Liliadrop+9234857'
     publishLocation: 'Container'
-    
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop9234857'
-    publishLocation: 'Container'
-
-- task: PublishPipelineArtifact@1
-name: 'PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'Artifact+98437'
-    publishLocation: 'pipeline'
 
 - task: PublishBuildArtifacts@1
+name: 'PublishBuildArtifacts@1 drop9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop+9234857'
+    ArtifactName: '3_drop9234857'
     publishLocation: 'Container'
 
-- task: PublishPipelineArtifact@0
-  inputs:
-    artifactName: 'art+9348275'
-    targetPath: '$(Pipeline.Workspace)'
+#- task: PublishPipelineArtifact@1
+#name: 'PublishPipelineArtifact@1
+#  inputs:
+#    targetPath: '$(Pipeline.Workspace)'
+#    artifact: '4_Artifact+98437'
+#    publishLocation: 'pipeline'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop+9234857'
-    publishLocation: 'Container'
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: '$(Pipeline.Workspace)'
+#    ArtifactName: 'drop+9234857'
+#    publishLocation: 'Container'
 
-- task: LiliaPublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'Liliadrop+9234857'
-    publishLocation: 'Container'
-    
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop9234857'
-    publishLocation: 'Container'
+#- task: PublishPipelineArtifact@0
+#  inputs:
+#    artifactName: 'art+9348275'
+#    targetPath: '$(Pipeline.Workspace)'
