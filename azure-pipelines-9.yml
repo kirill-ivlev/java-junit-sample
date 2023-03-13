@@ -4,7 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 trigger: none
 
-pool: Default
+pool: 
+  name: Default
   vmName: 'Telem_13.02'
 
 #    vmImage: 'ubuntu-latest'
