@@ -29,21 +29,21 @@ steps:
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
 - task: PublishBuildArtifacts@1
-name: 'PublishBuildArtifacts@1 drop+9234857'
+  name: 'PublishBuildArtifacts@1 drop+9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: '1_drop+9234857'
     publishLocation: 'Container'
 
 - task: LiliaPublishBuildArtifacts@1
-name: 'LiliaPublishBuildArtifacts@1 Liliadrop+9234857'
+  name: 'LiliaPublishBuildArtifacts@1 Liliadrop+9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: '2_Liliadrop+9234857'
     publishLocation: 'Container'
 
 - task: PublishBuildArtifacts@1
-name: 'PublishBuildArtifacts@1 drop9234857'
+  name: 'PublishBuildArtifacts@1 drop9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: '3_drop9234857'
