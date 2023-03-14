@@ -4,12 +4,14 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 trigger: none
 
-pool: 
-  name: Default
-  demands:
-    - agent.name -equals TestBuildArtifact
+#pool: 
+#  name: Default
+#  demands:
+#    - agent.name -equals TestBuildArtifact
 
-#    vmImage: 'ubuntu-latest'
+
+pool: 
+    vmImage: 'ubuntu-latest'
 
 steps:
 #- task: Maven@3
