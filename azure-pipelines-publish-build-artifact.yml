@@ -14,16 +14,16 @@ pool:
     vmImage: 'ubuntu-latest'
 
 steps:
-
+# Old version with issue
 - task: PublishBuildArtifacts@1
   name: 'Old_PublishBuildArtifacts'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'ArtifactWithIssue+32487'
     publishLocation: 'Container'
-
+# New version without issue
 - task: LiliaPublishBuildArtifacts@1
-  name: 'NewPublishBuildArtifacts'
+  name: 'New_PublishBuildArtifacts'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'ArtifactWithoutIssue+32487'
