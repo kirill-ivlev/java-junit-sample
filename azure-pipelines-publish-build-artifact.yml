@@ -5,13 +5,13 @@
 
 trigger: none
 
-#pool: 
-#  name: Default
-#  demands:
-#    - agent.name -equals TestBuildArtifact
-
 pool: 
-    vmImage: 'ubuntu-latest'
+  name: Default
+  demands:
+    - agent.name -equals TestBuildArtifact
+
+#pool: 
+#    vmImage: 'ubuntu-latest'
 
 steps:
 # Old version with issue
