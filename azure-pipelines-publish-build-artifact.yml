@@ -1,0 +1,71 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+trigger: none
+
+pool: 
+  name: Default
+  demands:
+    - agent.name -equals TestBuildArtifact
+
+
+
+#pool: 
+#    vmImage: 'ubuntu-latest'
+
+steps:
+#- task: Maven@3
+#  inputs:
+#    mavenPomFile: 'pom.xml'
+#    mavenOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.18'
+#    jdkArchitectureOption: 'x64'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#    goals: 'package'
+
+#- task: PublishTestResults@2
+#  inputs:
+#    testResultsFormat: 'JUnit'
+#    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+
+- task: PublishBuildArtifacts@1
+  name: 'PublishBuildArtifacts1_drop_9234857'
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: '1_drop+9234857'
+    publishLocation: 'Container'
+
+- task: LiliaPublishBuildArtifacts@1
+  name: 'LiliaPublishBuildArtifacts1_Liliadrop_9234857'
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: '2_Liliadrop+9234857'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  name: 'PublishBuildArtifacts1_drop9234857'
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: '3_drop9234857'
+    publishLocation: 'Container'
+
+#- task: PublishPipelineArtifact@1
+#name: 'PublishPipelineArtifact@1
+#  inputs:
+#    targetPath: '$(Pipeline.Workspace)'
+#    artifact: '4_Artifact+98437'
+#    publishLocation: 'pipeline'
+
+#- task: PublishBuildArtifacts@1
+#  inputs:
+#    PathtoPublish: '$(Pipeline.Workspace)'
+#    ArtifactName: 'drop+9234857'
+#    publishLocation: 'Container'
+
+#- task: PublishPipelineArtifact@0
+#  inputs:
+#    artifactName: 'art+9348275'
+#    targetPath: '$(Pipeline.Workspace)'
