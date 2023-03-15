@@ -69,3 +69,10 @@ steps:
 #  inputs:
 #    artifactName: 'art+9348275'
 #    targetPath: '$(Pipeline.Workspace)'
+
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: '2_Liliadrop+9234857'
+    downloadPath: '$(System.ArtifactsDirectory)'
