@@ -33,6 +33,6 @@ steps:
 - task: LiliaPublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'ArtifactWithoutIssue+32487'
+    ArtifactName: 'FileArtifactWithoutIssue+32487'
     publishLocation: 'FilePath'
     TargetPath: '$(Pipeline.Workspace)'
