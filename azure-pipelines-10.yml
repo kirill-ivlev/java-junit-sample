@@ -4,10 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 trigger: none
 
+pool: 
+  name: Default
+  demands:
+    - agent.name -equals DebugWebApi #TestBuildArtifact
+
 #pool: 
-#  name: Default
-#  demands:
-#    - agent.name -equals TestBuildArtifact
+#    vmImage: 'ubuntu-latest'
 
 variables:
 - name: artifactName1
@@ -17,10 +20,6 @@ variables:
 - name: artifactName3
   value: '3_drop & 9234857'
 
-
-
-pool: 
-    vmImage: 'ubuntu-latest'
 
 steps:
 #- task: Maven@3
