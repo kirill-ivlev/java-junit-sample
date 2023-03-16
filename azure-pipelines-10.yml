@@ -9,6 +9,14 @@ trigger: none
 #  demands:
 #    - agent.name -equals TestBuildArtifact
 
+variables:
+- name: artifactName1
+  value: '1_drop+9234857'
+- name: artifactName2
+  value: '2_Liliadrop+9234857'
+- name: artifactName3
+  value: '3_drop&9234857'
+
 
 
 pool: 
@@ -32,25 +40,57 @@ steps:
 #    testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: '1_PublishBuildArtifacts1'
+  condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: '1_drop+9234857'
+    ArtifactName: artifactName1
     publishLocation: 'Container'
 
 - task: LiliaPublishBuildArtifacts@1
-  name: 'LiliaPublishBuildArtifacts1_Liliadrop_9234857'
+  name: '2_LiliaPublishBuildArtifacts1'
+  condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: '2_Liliadrop+9234857'
+    ArtifactName: artifactName2
     publishLocation: 'Container'
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop9234857'
+  name: '3_PublishBuildArtifacts1'
+  condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: '3_drop9234857'
+    ArtifactName: artifactName3
     publishLocation: 'Container'
+
+- task: DownloadBuildArtifacts@1
+  name: '1_DownloadBuildArtifacts1'
+  condition: always()
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: artifactName1
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: DownloadBuildArtifacts@1
+  name: '2_DownloadBuildArtifacts1'
+  condition: always()
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: artifactName2
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: DownloadBuildArtifacts@1
+  name: '3_DownloadBuildArtifacts1'
+  condition: always()
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: artifactName3
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+
 
 #- task: PublishPipelineArtifact@1
 #name: 'PublishPipelineArtifact@1
@@ -69,10 +109,3 @@ steps:
 #  inputs:
 #    artifactName: 'art+9348275'
 #    targetPath: '$(Pipeline.Workspace)'
-
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: '2_Liliadrop+9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
