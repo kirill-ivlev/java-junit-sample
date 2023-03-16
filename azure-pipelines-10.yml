@@ -15,7 +15,7 @@ variables:
 - name: artifactName2
   value: '2_Liliadrop+9234857'
 - name: artifactName3
-  value: '3_drop&9234857'
+  value: '3_drop & 9234857'
 
 
 
