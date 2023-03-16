@@ -44,7 +44,7 @@ steps:
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: ${{ artifactName1 }}
+    ArtifactName: ${{ variables.artifactName1 }}
     publishLocation: 'Container'
 
 - task: LiliaPublishBuildArtifacts@1
@@ -52,7 +52,7 @@ steps:
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: ${{ artifactName2 }}
+    ArtifactName: ${{ variables.artifactName2 }}
     publishLocation: 'Container'
 
 - task: PublishBuildArtifacts@1
@@ -60,7 +60,7 @@ steps:
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: ${{ artifactName3 }}
+    ArtifactName: ${{ variables.artifactName3 }}
     publishLocation: 'Container'
 
 - task: DownloadBuildArtifacts@1
@@ -69,7 +69,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: ${{ artifactName1 }}
+    artifactName: ${{ variables.artifactName1 }}
     downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@1
@@ -78,7 +78,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: ${{ artifactName2 }}
+    artifactName: ${{ variables.artifactName2 }}
     downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@1
@@ -87,7 +87,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: ${{ artifactName3 }}
+    artifactName: ${{ variables.artifactName3 }}
     downloadPath: '$(System.ArtifactsDirectory)'
 
 
