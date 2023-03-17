@@ -17,6 +17,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_2'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop ! 9234857'
@@ -25,6 +26,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -35,6 +37,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_3'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop @ 9234857'
@@ -43,6 +46,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -53,6 +57,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_4'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop # 9234857'
@@ -61,6 +66,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -72,6 +78,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_5'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop % 9234857'
@@ -80,6 +87,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -90,6 +98,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_6'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop ^ 9234857'
@@ -99,6 +108,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_7'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop:9234857'
@@ -107,6 +117,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -117,6 +128,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_8'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop ? 9234857'
@@ -125,6 +137,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -135,6 +148,7 @@ steps:
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_9'
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
     ArtifactName: 'drop () 9234857'
@@ -143,6 +157,7 @@ steps:
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'current'
     downloadType: 'single'
@@ -150,6 +165,8 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@0 #.206.0
+  condition: always()
+  timeoutInMinutes: 1
   inputs:
     buildType: 'specific'
     project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
