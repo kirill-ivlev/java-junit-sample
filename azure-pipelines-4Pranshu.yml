@@ -14,7 +14,7 @@ variables:
 steps:
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_1'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -32,7 +32,7 @@ steps:
 
     
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_2'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -50,7 +50,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_3'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -68,7 +68,7 @@ steps:
 
     
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_4'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -87,7 +87,7 @@ steps:
 
     
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_5'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -105,7 +105,7 @@ steps:
 
     
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_6'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -114,7 +114,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_7'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -132,7 +132,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_8'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
@@ -150,7 +150,7 @@ steps:
 
 
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857'
+  name: 'PublishBuildArtifacts1_drop_9234857_9'
   condition: always()
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
