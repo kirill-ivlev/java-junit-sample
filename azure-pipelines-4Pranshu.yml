@@ -13,23 +13,6 @@ variables:
 
 steps:
 
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_1'
-  condition: always()
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop * 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop * 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
     
 - task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857_2'
@@ -164,14 +147,6 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     artifactName: 'drop () 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop * 9234857'
     downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@0 #.206.0
