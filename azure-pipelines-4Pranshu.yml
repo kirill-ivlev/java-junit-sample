@@ -17,7 +17,7 @@ steps:
   name: 'PublishBuildArtifacts1_drop_9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop & 9234857'
+    ArtifactName: 'drop + 9234857'
     publishLocation: 'Container'
 
 
@@ -25,7 +25,7 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: 'drop & 9234857'
+    artifactName: 'drop + 9234857'
     downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@0 #.206.0
@@ -36,7 +36,7 @@ steps:
     buildVersionToDownload: 'latest'
     allowPartiallySucceededBuilds: true
     downloadType: 'single'
-    artifactName: 'drop = 9234857'
+    artifactName: 'drop & 9234857'
     downloadPath: '$(System.ArtifactsDirectory)'
 
 
