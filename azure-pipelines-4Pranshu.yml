@@ -13,7 +13,7 @@ variables:
 
 steps:
 
-- task: PublishBuildArtifacts@1.200.0
+- task: PublishBuildArtifacts@1
   name: 'PublishBuildArtifacts1_drop_9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
