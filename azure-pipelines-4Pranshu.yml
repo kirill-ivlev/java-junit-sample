@@ -13,7 +13,7 @@ pool:
 
 steps:
 
-- task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1.200.0
   name: 'PublishBuildArtifacts1_drop_9234857'
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
