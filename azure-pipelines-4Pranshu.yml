@@ -20,12 +20,6 @@ steps:
     ArtifactName: 'drop & 9234857'
     publishLocation: 'Container'
 
-- task: DownloadBuildArtifacts@0 #.206.0
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop & 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
 
 - task: DownloadBuildArtifacts@0
   inputs:
@@ -33,6 +27,14 @@ steps:
     project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
     pipeline: '33'
     buildVersionToDownload: 'latest'
+    downloadType: 'single'
+    artifactName: 'drop & 9234857'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+
+- task: DownloadBuildArtifacts@0 #.206.0
+  inputs:
+    buildType: 'current'
     downloadType: 'single'
     artifactName: 'drop & 9234857'
     downloadPath: '$(System.ArtifactsDirectory)'
