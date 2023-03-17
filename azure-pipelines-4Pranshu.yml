@@ -17,14 +17,7 @@ steps:
     ArtifactName: 'drop & 9234857'
     publishLocation: 'Container'
 
-#- task: LiliaPublishBuildArtifacts@1
-#  name: 'LiliaPublishBuildArtifacts1_Liliadrop_9234857'
-#  inputs:
-#    PathtoPublish: '$(Pipeline.Workspace)'
-#    ArtifactName: '2_Liliadrop+9234857'
-#    publishLocation: 'Container'
-
-- task: DownloadBuildArtifacts@1
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'current'
     downloadType: 'single'
