@@ -8,8 +8,8 @@ trigger: none
 pool: 
     vmImage: 'windows-latest'
 
-#variables:
-#    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+variables:
+    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 steps:
 
