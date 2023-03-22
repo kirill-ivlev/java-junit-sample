@@ -11,18 +11,36 @@ pool:
 variables:
     DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
+strategy:
+  matrix:
+    'Artifact with !':
+      artifactName: 'drop ! 9234857'
+    'Artifact with @':
+      artifactName: 'drop @ 9234857'
+    'Artifact with #':
+      artifactName: 'drop # 9234857'
+    'Artifact with %':
+      artifactName: 'drop % 9234857'
+    'Artifact with ^':
+      artifactName: 'drop ^ 9234857'
+    'Artifact with :':
+      artifactName: 'drop : 9234857'
+    'Artifact with ?':
+      artifactName: 'drop ? 9234857'
+    'Artifact with ()':
+      artifactName: 'drop () 9234857'
+
 steps:
 
     
 - task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_2'
+  name: 'PublishBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
   inputs:
     PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop ! 9234857'
+    ArtifactName: $(artifactName)
     publishLocation: 'Container'
-
 
 - task: DownloadBuildArtifacts@0 #.206.0
   condition: always()
@@ -30,151 +48,20 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'single'
-    artifactName: 'drop ! 9234857'
+    artifactName: $(artifactName)
     downloadPath: '$(System.ArtifactsDirectory)'
 
-
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_3'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop @ 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop @ 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-    
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_4'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop # 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop # 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-
-    
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_5'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop % 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop ^ 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-    
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_6'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop ^ 9234857'
-    publishLocation: 'Container'
-
-
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_7'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop:9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop:9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_8'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop ? 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop ? 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-
-- task: PublishBuildArtifacts@1
-  name: 'PublishBuildArtifacts1_drop_9234857_9'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: 'drop () 9234857'
-    publishLocation: 'Container'
-
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop () 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
-
-- task: DownloadBuildArtifacts@0 #.206.0
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'specific'
-    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-    pipeline: '33'
-    buildVersionToDownload: 'latest'
-    allowPartiallySucceededBuilds: true
-    downloadType: 'single'
-    artifactName: 'drop & 9234857'
-    downloadPath: '$(System.ArtifactsDirectory)'
+#- task: DownloadBuildArtifacts@0 #.206.0
+#  condition: always()
+#  timeoutInMinutes: 1
+#  inputs:
+#    buildType: 'specific'
+#    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+#    pipeline: '33'
+#    buildVersionToDownload: 'latest'
+#    allowPartiallySucceededBuilds: true
+#    downloadType: 'single'
+#    artifactName: 'drop & 9234857'
+#    downloadPath: '$(System.ArtifactsDirectory)'
 
 
