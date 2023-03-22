@@ -29,6 +29,28 @@ strategy:
       artifactName: 'drop ? 9234857'
     'Artifact with ()':
       artifactName: 'drop () 9234857'
+    'Artifact with *':
+      artifactName: 'drop * 9234857'
+    'Artifact with $':
+      artifactName: 'drop $ 9234857'
+    'Artifact with &':
+      artifactName: 'drop & 9234857'
+    'Artifact with -+=':
+      artifactName: 'drop -+= 9234857'
+    'Artifact with /':
+      artifactName: 'drop / 9234857'
+    'Artifact with \':
+      artifactName: 'drop \ 9234857'
+    'Artifact with |':
+      artifactName: 'drop | 9234857'
+    'Artifact with ,':
+      artifactName: 'drop , 9234857'
+    'Artifact with .':
+      artifactName: 'drop . 9234857'
+    'Artifact with `':
+      artifactName: 'drop ` 9234857'
+    'Artifact with ~':
+      artifactName: 'drop ~ 9234857'
 
 steps:
 
@@ -42,7 +64,7 @@ steps:
     ArtifactName: $(artifactName)
     publishLocation: 'Container'
 
-- task: DownloadBuildArtifacts@0 #.206.0
+- task: DownloadBuildArtifacts@0.206.0
   condition: always()
   timeoutInMinutes: 1
   inputs:
