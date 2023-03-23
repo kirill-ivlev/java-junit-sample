@@ -2,8 +2,8 @@ trigger: none
 
 pool: 
   name: Default
-#  demands:
-#    - agent.name -equals TestBuildArtifact
+  demands:
+    - agent.name -equals TestBuildArt # TestBuildArtifact
 
 #pool: 
 #    vmImage: 'macos-latest'
