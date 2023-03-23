@@ -1,0 +1,89 @@
+trigger: none
+
+#pool: 
+#  name: Default
+#  demands:
+#    - agent.name -equals TestBuildArtifact
+
+pool: 
+    vmImage: 'windows-latest'
+
+variables:
+    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+
+strategy:
+  matrix:
+    'Artifact with &':
+      artifactName: 'drop & 9234857'
+    #'Artifact with !':
+    #  artifactName: 'drop ! 9234857'
+    #'Artifact with @':
+    #  artifactName: 'drop @ 9234857'
+    #'Artifact with #':
+    #  artifactName: 'drop # 9234857'
+    #'Artifact with %':
+    #  artifactName: 'drop % 9234857'
+    #'Artifact with ^':
+    #  artifactName: 'drop ^ 9234857'
+    #'Artifact with :':
+    #  artifactName: 'drop : 9234857'
+    #'Artifact with ?':
+    #  artifactName: 'drop ? 9234857'
+    #'Artifact with ()':
+    #  artifactName: 'drop () 9234857'
+    #'Artifact with *':
+    #  artifactName: 'drop * 9234857'
+    #'Artifact with $':
+    #  artifactName: 'drop $ 9234857'
+    #'Artifact with -+=':
+    #  artifactName: 'drop -+= 9234857'
+    #'Artifact with /':
+    #  artifactName: 'drop / 9234857'
+    #'Artifact with \':
+    #  artifactName: 'drop \ 9234857'
+    #'Artifact with |':
+    #  artifactName: 'drop | 9234857'
+    #'Artifact with ,':
+    #  artifactName: 'drop , 9234857'
+    #'Artifact with .':
+    #  artifactName: 'drop . 9234857'
+    #'Artifact with `':
+    #  artifactName: 'drop ` 9234857'
+    #'Artifact with ~':
+    #  artifactName: 'drop ~ 9234857'
+
+steps:
+
+    
+- task: PublishBuildArtifactsLil03@1
+  name: 'PublishBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: $(artifactName)
+    publishLocation: 'Container'
+
+- task: DownloadBuildArtifactsLil03@0 #.206.0
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: $(artifactName)
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+#- task: DownloadBuildArtifacts@0 #.206.0
+#  condition: always()
+#  timeoutInMinutes: 1
+#  inputs:
+#    buildType: 'specific'
+#    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+#    pipeline: '33'
+#    buildVersionToDownload: 'latest'
+#    allowPartiallySucceededBuilds: true
+#    downloadType: 'single'
+#    artifactName: 'drop & 9234857'
+#    downloadPath: '$(System.ArtifactsDirectory)'
+
+
