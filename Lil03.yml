@@ -6,7 +6,7 @@ trigger: none
 #    - agent.name -equals TestBuildArt
 
 pool: 
-    vmImage: 'ubuntu-latest'
+    vmImage: 'macos-latest'
 
 #variables:
 #    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
