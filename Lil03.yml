@@ -1,12 +1,12 @@
 trigger: none
 
-#pool: 
-#  name: Default
-#  demands:
-#    - agent.name -equals TestBuildArtifact
-
 pool: 
-    vmImage: 'windows-latest'
+  name: Default
+  demands:
+    - agent.name -equals TestBuildArt
+
+#pool: 
+#    vmImage: 'windows-latest'
 
 variables:
     DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
