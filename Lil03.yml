@@ -1,15 +1,15 @@
 trigger: none
 
-#pool: 
-#  name: Default
-#  demands:
-#    - agent.name -equals TestBuildArt
-
 pool: 
-    vmImage: 'macos-latest'
+  name: Default
+  demands:
+    - agent.name -equals TestBuildArt
 
-variables:
-    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+#pool: 
+#    vmImage: 'macos-latest'
+
+#variables:
+#    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 strategy:
   matrix:
