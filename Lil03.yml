@@ -8,8 +8,8 @@ trigger: none
 pool: 
     vmImage: 'macos-latest'
 
-#variables:
-#    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+variables:
+    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 strategy:
   matrix:
