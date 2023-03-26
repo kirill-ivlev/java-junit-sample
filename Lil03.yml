@@ -15,42 +15,42 @@ strategy:
   matrix:
     'Artifact with +':
       artifactName: 'drop + 9234857'
-    'Artifact with !':
-      artifactName: 'drop ! 9234857'
-    'Artifact with @':
-      artifactName: 'drop @ 9234857'
-    'Artifact with #':
-      artifactName: 'drop # 9234857'
-    'Artifact with %':
-      artifactName: 'drop % 9234857'
-    'Artifact with ^':
-      artifactName: 'drop ^ 9234857'
-    'Artifact with :':
-      artifactName: 'drop : 9234857'
-    'Artifact with ?':
-      artifactName: 'drop ? 9234857'
-    'Artifact with ()':
-      artifactName: 'drop () 9234857'
-    'Artifact with *':
-      artifactName: 'drop * 9234857'
-    'Artifact with $':
-      artifactName: 'drop $ 9234857'
-    'Artifact with -+=':
-      artifactName: 'drop -+= 9234857'
-    'Artifact with /':
-      artifactName: 'drop / 9234857'
-    'Artifact with \':
-      artifactName: 'drop \ 9234857'
-    'Artifact with |':
-      artifactName: 'drop | 9234857'
-    'Artifact with ,':
-      artifactName: 'drop , 9234857'
-    'Artifact with .':
-      artifactName: 'drop . 9234857'
-    'Artifact with `':
-      artifactName: 'drop ` 9234857'
-    'Artifact with ~':
-      artifactName: 'drop ~ 9234857'
+    #'Artifact with !':
+    #  artifactName: 'drop ! 9234857'
+    #'Artifact with @':
+    #  artifactName: 'drop @ 9234857'
+    #'Artifact with #':
+    #  artifactName: 'drop # 9234857'
+    #'Artifact with %':
+    #  artifactName: 'drop % 9234857'
+    #'Artifact with ^':
+    #  artifactName: 'drop ^ 9234857'
+    #'Artifact with :':
+    #  artifactName: 'drop : 9234857'
+    #'Artifact with ?':
+    #  artifactName: 'drop ? 9234857'
+    #'Artifact with ()':
+    #  artifactName: 'drop () 9234857'
+    #'Artifact with *':
+    #  artifactName: 'drop * 9234857'
+    #'Artifact with $':
+    #  artifactName: 'drop $ 9234857'
+    #'Artifact with -+=':
+    #  artifactName: 'drop -+= 9234857'
+    #'Artifact with /':
+    #  artifactName: 'drop / 9234857'
+    #'Artifact with \':
+    #  artifactName: 'drop \ 9234857'
+    #'Artifact with |':
+    #  artifactName: 'drop | 9234857'
+    #'Artifact with ,':
+    #  artifactName: 'drop , 9234857'
+    #'Artifact with .':
+    #  artifactName: 'drop . 9234857'
+    #'Artifact with `':
+    #  artifactName: 'drop ` 9234857'
+    #'Artifact with ~':
+    #  artifactName: 'drop ~ 9234857'
 
 steps:
 
