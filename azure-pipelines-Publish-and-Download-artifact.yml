@@ -1,9 +1,5 @@
 trigger: none
 
-#  demands:
-#    - agent.name -equals TestBuildArt
-
-
 ## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
 
 parameters:
@@ -15,8 +11,9 @@ parameters:
   default: false
   displayName: Run Self-Hosted
   type: boolean
+  # just more steps to run, less steps - for testing pipeline is ok
 - name: moreoptions
-  default: false
+  default: true
   displayName: Run Many
   type: boolean
 
@@ -27,15 +24,15 @@ jobs:
   displayName: 'MS-Hosted'
   strategy:
     matrix:
-#      'Ubuntu NoZip':
-#        imageName: 'ubuntu-latest'
-#        artifactName: 'drop + 9234857 Ubuntu NoZip'
-#      'MacOS NoZip':
-#        imageName: 'macOS-latest'
-#        artifactName: 'drop + 9234857 MacOS NoZip'
-#      'Windows NoZip':
-#        imageName: 'windows-latest'
-#        artifactName: 'drop + 9234857 Windows NoZip'
+      'Ubuntu NoZip':
+        imageName: 'ubuntu-latest'
+        artifactName: 'drop + 9234857 Ubuntu NoZip'
+      'MacOS NoZip':
+        imageName: 'macOS-latest'
+        artifactName: 'drop + 9234857 MacOS NoZip'
+      'Windows NoZip':
+        imageName: 'windows-latest'
+        artifactName: 'drop + 9234857 Windows NoZip'
       'Windows Zip':
         imageName: 'windows-latest'
         artifactName: 'drop + 9234857 Windows Zip'
@@ -72,7 +69,8 @@ jobs:
   # publish artifact to file path
   - task: PublishBuildArtifacts@1
     name: 'FileShare_PublishBuildArtifacts'
-    condition: and(always(), eq(variables.imageName, 'windows-latest'))
+    # file path option is only possible for Windows
+    condition: eq(variables.imageName, 'windows-latest')
     timeoutInMinutes: 1
     inputs:
       PathtoPublish: '$(Build.SourcesDirectory)\src'
@@ -83,6 +81,7 @@ jobs:
   # download artifact from file path
   - task: DownloadBuildArtifacts@0 #.206.0
     name: 'FileShare_DownloadBuildArtifacts'
+    # file path option is only possible for Windows
     condition: eq(variables.imageName, 'windows-latest')
     timeoutInMinutes: 1
     inputs:
@@ -207,6 +206,7 @@ jobs:
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # publish artifact to file path
+  # file path option is only possible for Windows
   - task: PublishBuildArtifacts@1
     name: 'FileShare_PublishBuildArtifacts'
     condition: always()
@@ -218,6 +218,7 @@ jobs:
       TargetPath: '$(Pipeline.Workspace)'
 
   # download artifact from file path
+  # file path option is only possible for Windows
   - task: DownloadBuildArtifacts@0 #.206.0
     name: 'FileShare_DownloadBuildArtifacts'
     condition: always()
