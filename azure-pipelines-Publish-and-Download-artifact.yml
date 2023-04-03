@@ -29,18 +29,24 @@ jobs:
     matrix:
       'Ubuntu NoZip':
         imageName: 'ubuntu-latest'
+        artifactName: 'drop + 9234857 Ubuntu NoZip'
       'MacOS NoZip':
         imageName: 'macOS-latest'
+        artifactName: 'drop + 9234857 MacOS NoZip'
       'Windows NoZip':
         imageName: 'windows-latest'
+        artifactName: 'drop + 9234857 Windows NoZip'
       'Ubuntu Zip':
         imageName: 'ubuntu-latest'
+        artifactName: 'drop + 9234857 Ubuntu Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'MacOS Zip':
         imageName: 'macOS-latest'
+        artifactName: 'drop + 9234857 MacOS Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'Windows Zip':
         imageName: 'windows-latest'
+        artifactName: 'drop + 9234857 Windows Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 
@@ -132,9 +138,9 @@ jobs:
   strategy:
     matrix:
       'Artifact with + NoZip':
-        artifactName: 'drop + 9234857'
+        artifactName: 'drop + 9234857 NoZip'
       'Artifact with + Zip':
-        artifactName: 'drop + 9234857'
+        artifactName: 'drop + 9234857 Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       #'Artifact with !':
       #  artifactName: 'drop ! 9234857'
