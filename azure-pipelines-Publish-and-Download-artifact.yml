@@ -24,14 +24,13 @@ jobs:
 
 - job: 'MS_Hosted'
   condition: ${{ parameters.runmshosted }}
-  displayName: 'MS-Hosted'  
-  variables:
-    artifactName: 'drop + 9234857'
+  displayName: 'MS-Hosted'
   strategy:
     matrix:
       'Ubuntu NoZip':
         imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu NoZip'
+        zip : 'false'
 #      'MacOS NoZip':
 #        imageName: 'macOS-latest'
 #        artifactName: 'drop + 9234857 MacOS NoZip'
@@ -41,7 +40,7 @@ jobs:
       'Ubuntu Zip':
         imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu Zip'
-        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+        zip : 'true'
 #      'MacOS Zip':
 #        imageName: 'macOS-latest'
 #        artifactName: 'drop + 9234857 MacOS Zip'
@@ -52,6 +51,8 @@ jobs:
 #        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
   pool:
     vmImage: $(imageName)
+  variables:
+    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : $(zip)
 
 
 ## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
