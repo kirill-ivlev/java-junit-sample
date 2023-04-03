@@ -26,32 +26,28 @@ jobs:
   strategy:
     matrix:
       'Ubuntu NoZip':
-        pool:
-          imageName: 'ubuntu-latest'
+        imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu NoZip'
       'MacOS NoZip':
-        pool:
-          imageName: 'macOS-latest'
+        imageName: 'macOS-latest'
         artifactName: 'drop + 9234857 MacOS NoZip'
       'Windows NoZip':
-        pool:
-          imageName: 'windows-latest'
+        imageName: 'windows-latest'
         artifactName: 'drop + 9234857 Windows NoZip'
       'Ubuntu Zip':
-        pool:
-          imageName: 'ubuntu-latest'
+        imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'MacOS Zip':
-        pool:
-          imageName: 'macOS-latest'
+        imageName: 'macOS-latest'
         artifactName: 'drop + 9234857 MacOS Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'Windows Zip':
-        pool:
-          imageName: 'windows-latest'
+        imageName: 'windows-latest'
         artifactName: 'drop + 9234857 Windows Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+  pool:
+    vmImage: $(imageName)
 
 
 ## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
