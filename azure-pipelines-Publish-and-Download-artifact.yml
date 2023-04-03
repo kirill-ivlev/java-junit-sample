@@ -1,7 +1,7 @@
 trigger: none
 
-pool: 
-  name: Default
+pool:
+  vmImage: ubuntu-latest
 #  demands:
 #    - agent.name -equals TestBuildArt
 
