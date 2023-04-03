@@ -120,3 +120,26 @@ steps:
     buildType: 'current'
     downloadType: 'specific'
     downloadPath: '$(System.ArtifactsDirectory)'
+
+# download multiple artifacts from previous run of this build
+- task: DownloadBuildArtifactsLil03@0
+  inputs:
+    buildType: 'specific'
+    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+    pipeline: '35'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+# download single artifact from previous run of this build
+- task: DownloadBuildArtifactsLil03@0
+  inputs:
+    buildType: 'specific'
+    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+    pipeline: '35'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    downloadType: 'single'
+    artifactName: '$(artifactName)'
+    downloadPath: '$(System.ArtifactsDirectory)'
