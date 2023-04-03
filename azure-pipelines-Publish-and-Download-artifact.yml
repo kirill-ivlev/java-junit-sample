@@ -135,8 +135,7 @@ jobs:
         artifactName: 'drop + 9234857'
       'Artifact with + Zip':
         artifactName: 'drop + 9234857'
-        variables:
-          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       #'Artifact with !':
       #  artifactName: 'drop ! 9234857'
       #'Artifact with @':
