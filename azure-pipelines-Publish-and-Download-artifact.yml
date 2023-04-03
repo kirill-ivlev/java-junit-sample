@@ -12,8 +12,12 @@ parameters:
   displayName: Run MS-Hosted
   type: boolean
 - name: runselfhosted
-  default: true
+  default: false
   displayName: Run Self-Hosted
+  type: boolean
+- name: moreoptions
+  default: false
+  displayName: Run Many
   type: boolean
 
 jobs:
@@ -28,24 +32,24 @@ jobs:
       'Ubuntu NoZip':
         imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu NoZip'
-      'MacOS NoZip':
-        imageName: 'macOS-latest'
-        artifactName: 'drop + 9234857 MacOS NoZip'
-      'Windows NoZip':
-        imageName: 'windows-latest'
-        artifactName: 'drop + 9234857 Windows NoZip'
+#      'MacOS NoZip':
+#        imageName: 'macOS-latest'
+#        artifactName: 'drop + 9234857 MacOS NoZip'
+#      'Windows NoZip':
+#        imageName: 'windows-latest'
+#        artifactName: 'drop + 9234857 Windows NoZip'
       'Ubuntu Zip':
         imageName: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
-      'MacOS Zip':
-        imageName: 'macOS-latest'
-        artifactName: 'drop + 9234857 MacOS Zip'
-        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
-      'Windows Zip':
-        imageName: 'windows-latest'
-        artifactName: 'drop + 9234857 Windows Zip'
-        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+#      'MacOS Zip':
+#        imageName: 'macOS-latest'
+#        artifactName: 'drop + 9234857 MacOS Zip'
+#        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+#      'Windows Zip':
+#        imageName: 'windows-latest'
+#        artifactName: 'drop + 9234857 Windows Zip'
+#        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
   pool:
     vmImage: $(imageName)
 
@@ -99,7 +103,7 @@ jobs:
   # download multiple artifacts from this build
   - task: DownloadBuildArtifacts@0
     name: 'All_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'current'
@@ -109,7 +113,7 @@ jobs:
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifacts@0
     name: 'All_Previous_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
@@ -123,7 +127,7 @@ jobs:
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifacts@0
     name: 'Previous_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
@@ -236,7 +240,7 @@ jobs:
   # download multiple artifacts from this build
   - task: DownloadBuildArtifacts@0
     name: 'All_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'current'
@@ -246,7 +250,7 @@ jobs:
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifacts@0
     name: 'All_Previous_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
@@ -260,7 +264,7 @@ jobs:
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifacts@0
     name: 'Previous_DownloadBuildArtifacts'
-    condition: always()
+    condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
