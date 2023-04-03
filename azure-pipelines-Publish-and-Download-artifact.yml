@@ -1,0 +1,117 @@
+trigger: none
+
+pool: 
+  name: Default
+  demands:
+    - agent.name -equals TestBuildArt
+
+#pool: 
+#    vmImage: 'macos-latest'
+
+#variables:
+#    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+
+strategy:
+  matrix:
+    'Artifact with +':
+      artifactName: 'drop + 9234857'
+    #'Artifact with !':
+    #  artifactName: 'drop ! 9234857'
+    #'Artifact with @':
+    #  artifactName: 'drop @ 9234857'
+    #'Artifact with #':
+    #  artifactName: 'drop # 9234857'
+    #'Artifact with %':
+    #  artifactName: 'drop % 9234857'
+    #'Artifact with ^':
+    #  artifactName: 'drop ^ 9234857'
+    #'Artifact with :':
+    #  artifactName: 'drop : 9234857'
+    #'Artifact with ?':
+    #  artifactName: 'drop ? 9234857'
+    #'Artifact with ()':
+    #  artifactName: 'drop () 9234857'
+    #'Artifact with *':
+    #  artifactName: 'drop * 9234857'
+    #'Artifact with $':
+    #  artifactName: 'drop $ 9234857'
+    #'Artifact with -+=':
+    #  artifactName: 'drop -+= 9234857'
+    #'Artifact with /':
+    #  artifactName: 'drop / 9234857'
+    #'Artifact with \':
+    #  artifactName: 'drop \ 9234857'
+    #'Artifact with |':
+    #  artifactName: 'drop | 9234857'
+    #'Artifact with ,':
+    #  artifactName: 'drop , 9234857'
+    #'Artifact with .':
+    #  artifactName: 'drop . 9234857'
+    #'Artifact with `':
+    #  artifactName: 'drop ` 9234857'
+    #'Artifact with ~':
+    #  artifactName: 'drop ~ 9234857'
+
+steps:
+
+- task: PublishBuildArtifactsLil03@1
+  name: 'Pipeline_PublishBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: $(artifactName)
+    publishLocation: 'Container'
+
+- task: DownloadBuildArtifactsLil03@0 #.206.0
+  name: 'Pipeline_DownloadBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: $(artifactName)
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+#- task: DownloadBuildArtifacts@0 #.206.0
+#  condition: always()
+#  timeoutInMinutes: 1
+#  inputs:
+#    buildType: 'specific'
+#    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+#    pipeline: '33'
+#    buildVersionToDownload: 'latest'
+#    allowPartiallySucceededBuilds: true
+#    downloadType: 'single'
+#    artifactName: 'drop & 9234857'
+#    downloadPath: '$(System.ArtifactsDirectory)'
+
+
+- task: PublishBuildArtifactsLil03@1
+  name: 'FileShare_PublishBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    PathtoPublish: '$(Pipeline.Workspace)'
+    ArtifactName: '$(artifactName)2'
+    publishLocation: 'FilePath'
+    TargetPath: '$(Pipeline.Workspace)'
+
+- task: DownloadBuildArtifactsLil03@0 #.206.0
+  name: 'FileShare_DownloadBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    buildType: 'current'
+    downloadType: 'single'
+    artifactName: '$(artifactName)2'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+- task: DownloadBuildArtifactsLil03@0
+  name: 'All_DownloadBuildArtifacts'
+  condition: always()
+  timeoutInMinutes: 1
+  inputs:
+    buildType: 'current'
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
