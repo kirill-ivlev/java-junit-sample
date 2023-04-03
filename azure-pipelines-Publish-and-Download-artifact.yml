@@ -27,15 +27,15 @@ jobs:
   displayName: 'MS-Hosted'
   strategy:
     matrix:
-      'Ubuntu NoZip':
-        imageName: 'ubuntu-latest'
-        artifactName: 'drop + 9234857 Ubuntu NoZip'
-      'MacOS NoZip':
-        imageName: 'macOS-latest'
-        artifactName: 'drop + 9234857 MacOS NoZip'
-      'Windows NoZip':
-        imageName: 'windows-latest'
-        artifactName: 'drop + 9234857 Windows NoZip'
+#      'Ubuntu NoZip':
+#        imageName: 'ubuntu-latest'
+#        artifactName: 'drop + 9234857 Ubuntu NoZip'
+#      'MacOS NoZip':
+#        imageName: 'macOS-latest'
+#        artifactName: 'drop + 9234857 MacOS NoZip'
+#      'Windows NoZip':
+#        imageName: 'windows-latest'
+#        artifactName: 'drop + 9234857 Windows NoZip'
       'Windows Zip':
         imageName: 'windows-latest'
         artifactName: 'drop + 9234857 Windows Zip'
