@@ -27,28 +27,28 @@ jobs:
   displayName: 'MS-Hosted'
   strategy:
     matrix:
-      'Ubuntu NoZip':
-        imageName: 'ubuntu-latest'
-        artifactName: 'drop + 9234857 Ubuntu NoZip'
-        zip : 'false'
+#      'Ubuntu NoZip':
+#        imageName: 'ubuntu-latest'
+#        artifactName: 'drop + 9234857 Ubuntu NoZip'
+#        zip : 'false'
 #      'MacOS NoZip':
 #        imageName: 'macOS-latest'
 #        artifactName: 'drop + 9234857 MacOS NoZip'
 #      'Windows NoZip':
 #        imageName: 'windows-latest'
 #        artifactName: 'drop + 9234857 Windows NoZip'
-      'Ubuntu Zip':
-        imageName: 'ubuntu-latest'
-        artifactName: 'drop + 9234857 Ubuntu Zip'
-        zip : 'true'
+#      'Ubuntu Zip':
+#        imageName: 'ubuntu-latest'
+#        artifactName: 'drop + 9234857 Ubuntu Zip'
+#        zip : 'true'
 #      'MacOS Zip':
 #        imageName: 'macOS-latest'
 #        artifactName: 'drop + 9234857 MacOS Zip'
 #        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
-#      'Windows Zip':
-#        imageName: 'windows-latest'
-#        artifactName: 'drop + 9234857 Windows Zip'
-#        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+      'Windows Zip':
+        imageName: 'windows-latest'
+        artifactName: 'drop + 9234857 Windows Zip'
+        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
   pool:
     vmImage: $(imageName)
   variables:
