@@ -54,6 +54,7 @@ strategy:
 
 steps:
 
+# publish artifact to container
 - task: PublishBuildArtifacts@1
   name: 'Pipeline_PublishBuildArtifacts'
   condition: always()
@@ -63,6 +64,8 @@ steps:
     ArtifactName: $(artifactName)
     publishLocation: 'Container'
 
+
+# download artifact from container
 - task: DownloadBuildArtifacts@0 #.206.0
   name: 'Pipeline_DownloadBuildArtifacts'
   condition: always()
@@ -87,6 +90,7 @@ steps:
 #    downloadPath: '$(System.ArtifactsDirectory)'
 
 
+# publish artifact to file path
 - task: PublishBuildArtifacts@1
   name: 'FileShare_PublishBuildArtifacts'
   condition: always()
@@ -97,6 +101,7 @@ steps:
     publishLocation: 'FilePath'
     TargetPath: '$(Pipeline.Workspace)'
 
+# download artifact from file path
 - task: DownloadBuildArtifacts@0 #.206.0
   name: 'FileShare_DownloadBuildArtifacts'
   condition: always()
@@ -107,6 +112,7 @@ steps:
     artifactName: '$(artifactName)2'
     downloadPath: '$(System.ArtifactsDirectory)'
 
+# download multiple artifacts from this build
 - task: DownloadBuildArtifacts@0
   name: 'All_DownloadBuildArtifacts'
   condition: always()
@@ -114,4 +120,27 @@ steps:
   inputs:
     buildType: 'current'
     downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+# download multiple artifacts from previous run of this build
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+    pipeline: '35'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    downloadType: 'specific'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
+# download single artifact from previous run of this build
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+    pipeline: '35'
+    buildVersionToDownload: 'latest'
+    allowPartiallySucceededBuilds: true
+    downloadType: 'single'
+    artifactName: '$(artifactName)'
     downloadPath: '$(System.ArtifactsDirectory)'
