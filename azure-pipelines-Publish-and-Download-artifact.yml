@@ -59,7 +59,7 @@ jobs:
     condition: always()
     timeoutInMinutes: 1
     inputs:
-      PathtoPublish: '$(Pipeline.Workspace)'
+      PathtoPublish: '$(Build.SourcesDirectory)'
       ArtifactName: $(artifactName)
       publishLocation: 'Container'
 
@@ -80,7 +80,7 @@ jobs:
     condition: and(always(), eq(variables.imageName, 'windows-latest'))
     timeoutInMinutes: 1
     inputs:
-      PathtoPublish: '$(Pipeline.Workspace)'
+      PathtoPublish: '$(Build.SourcesDirectory)'
       ArtifactName: '$(artifactName)2'
       publishLocation: 'FilePath'
       TargetPath: '$(Pipeline.Workspace)'
@@ -190,7 +190,7 @@ jobs:
     condition: always()
     timeoutInMinutes: 1
     inputs:
-      PathtoPublish: '$(Pipeline.Workspace)'
+      PathtoPublish: '$(Build.SourcesDirectory)'
       ArtifactName: $(artifactName)
       publishLocation: 'Container'
 
@@ -211,7 +211,7 @@ jobs:
     condition: always()
     timeoutInMinutes: 1
     inputs:
-      PathtoPublish: '$(Pipeline.Workspace)'
+      PathtoPublish: '$(Build.SourcesDirectory)'
       ArtifactName: '$(artifactName)2'
       publishLocation: 'FilePath'
       TargetPath: '$(Pipeline.Workspace)'
