@@ -54,7 +54,7 @@ strategy:
 
 steps:
 
-- task: PublishBuildArtifactsLil03@1
+- task: PublishBuildArtifacts@1
   name: 'Pipeline_PublishBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -63,7 +63,7 @@ steps:
     ArtifactName: $(artifactName)
     publishLocation: 'Container'
 
-- task: DownloadBuildArtifactsLil03@0 #.206.0
+- task: DownloadBuildArtifacts@0 #.206.0
   name: 'Pipeline_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -87,7 +87,7 @@ steps:
 #    downloadPath: '$(System.ArtifactsDirectory)'
 
 
-- task: PublishBuildArtifactsLil03@1
+- task: PublishBuildArtifacts@1
   name: 'FileShare_PublishBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -97,7 +97,7 @@ steps:
     publishLocation: 'FilePath'
     TargetPath: '$(Pipeline.Workspace)'
 
-- task: DownloadBuildArtifactsLil03@0 #.206.0
+- task: DownloadBuildArtifacts@0 #.206.0
   name: 'FileShare_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -107,7 +107,7 @@ steps:
     artifactName: '$(artifactName)2'
     downloadPath: '$(System.ArtifactsDirectory)'
 
-- task: DownloadBuildArtifactsLil03@0
+- task: DownloadBuildArtifacts@0
   name: 'All_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
