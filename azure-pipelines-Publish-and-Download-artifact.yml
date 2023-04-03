@@ -5,142 +5,255 @@ pool:
 #  demands:
 #    - agent.name -equals TestBuildArt
 
-#pool: 
-#    vmImage: 'macos-latest'
 
-#variables:
-#    DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
 
-strategy:
-  matrix:
-    'Artifact with +':
-      artifactName: 'drop + 9234857'
-    #'Artifact with !':
-    #  artifactName: 'drop ! 9234857'
-    #'Artifact with @':
-    #  artifactName: 'drop @ 9234857'
-    #'Artifact with #':
-    #  artifactName: 'drop # 9234857'
-    #'Artifact with %':
-    #  artifactName: 'drop % 9234857'
-    #'Artifact with ^':
-    #  artifactName: 'drop ^ 9234857'
-    #'Artifact with :':
-    #  artifactName: 'drop : 9234857'
-    #'Artifact with ?':
-    #  artifactName: 'drop ? 9234857'
-    #'Artifact with ()':
-    #  artifactName: 'drop () 9234857'
-    #'Artifact with *':
-    #  artifactName: 'drop * 9234857'
-    #'Artifact with $':
-    #  artifactName: 'drop $ 9234857'
-    #'Artifact with -+=':
-    #  artifactName: 'drop -+= 9234857'
-    #'Artifact with /':
-    #  artifactName: 'drop / 9234857'
-    #'Artifact with \':
-    #  artifactName: 'drop \ 9234857'
-    #'Artifact with |':
-    #  artifactName: 'drop | 9234857'
-    #'Artifact with ,':
-    #  artifactName: 'drop , 9234857'
-    #'Artifact with .':
-    #  artifactName: 'drop . 9234857'
-    #'Artifact with `':
-    #  artifactName: 'drop ` 9234857'
-    #'Artifact with ~':
-    #  artifactName: 'drop ~ 9234857'
+parameters:
+- name: runmshosted
+  default: true
+  displayName: Run MS-Hosted
+  type: boolean
+- name: runselfhosted
+  default: true
+  displayName: Run Self-Hosted
+  type: boolean
 
-steps:
+jobs:
 
-# publish artifact to container
-- task: PublishBuildArtifacts@1
-  name: 'Pipeline_PublishBuildArtifacts'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: $(artifactName)
-    publishLocation: 'Container'
+- job: 'MS_Hosted'
+  condition: ${{ parameters.runmshosted }}
+  displayName: 'MS-Hosted'  
+  variables:
+    artifactName: 'drop + 9234857'
+  strategy:
+    matrix:
+      'Ubuntu NoZip':
+        imageName: 'ubuntu-latest'
+      'MacOS NoZip':
+        imageName: 'macOS-latest'
+      'Windows NoZip':
+        imageName: 'windows-latest'
+      'Ubuntu Zip':
+        imageName: 'ubuntu-latest'
+        variables:
+          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+      'MacOS Zip':
+        imageName: 'macOS-latest'
+        variables:
+          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+      'Windows Zip':
+        imageName: 'windows-latest'
+        variables:
+          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 
-# download artifact from container
-- task: DownloadBuildArtifacts@0 #.206.0
-  name: 'Pipeline_DownloadBuildArtifacts'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: $(artifactName)
-    downloadPath: '$(System.ArtifactsDirectory)'
+## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
+  steps:
 
-#- task: DownloadBuildArtifacts@0 #.206.0
-#  condition: always()
-#  timeoutInMinutes: 1
-#  inputs:
-#    buildType: 'specific'
-#    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-#    pipeline: '33'
-#    buildVersionToDownload: 'latest'
-#    allowPartiallySucceededBuilds: true
-#    downloadType: 'single'
-#    artifactName: 'drop & 9234857'
-#    downloadPath: '$(System.ArtifactsDirectory)'
+  # publish artifact to container
+  - task: PublishBuildArtifacts@1
+    name: 'Pipeline_PublishBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      PathtoPublish: '$(Pipeline.Workspace)'
+      ArtifactName: $(artifactName)
+      publishLocation: 'Container'
+
+  # download artifact from container
+  - task: DownloadBuildArtifacts@0 #.206.0
+    name: 'Pipeline_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'single'
+      artifactName: $(artifactName)
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # publish artifact to file path
+  - task: PublishBuildArtifacts@1
+    name: 'FileShare_PublishBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      PathtoPublish: '$(Pipeline.Workspace)'
+      ArtifactName: '$(artifactName)2'
+      publishLocation: 'FilePath'
+      TargetPath: '$(Pipeline.Workspace)'
+
+  # download artifact from file path
+  - task: DownloadBuildArtifacts@0 #.206.0
+    name: 'FileShare_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'single'
+      artifactName: '$(artifactName)2'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download multiple artifacts from this build
+  - task: DownloadBuildArtifacts@0
+    name: 'All_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'specific'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download multiple artifacts from previous run of this build
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'specific'
+      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+      pipeline: '35'
+      buildVersionToDownload: 'latest'
+      allowPartiallySucceededBuilds: true
+      downloadType: 'specific'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download single artifact from previous run of this build
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'specific'
+      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+      pipeline: '35'
+      buildVersionToDownload: 'latest'
+      allowPartiallySucceededBuilds: true
+      downloadType: 'single'
+      artifactName: '$(artifactName)'
+      downloadPath: '$(System.ArtifactsDirectory)'
 
 
-# publish artifact to file path
-- task: PublishBuildArtifacts@1
-  name: 'FileShare_PublishBuildArtifacts'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    PathtoPublish: '$(Pipeline.Workspace)'
-    ArtifactName: '$(artifactName)2'
-    publishLocation: 'FilePath'
-    TargetPath: '$(Pipeline.Workspace)'
 
-# download artifact from file path
-- task: DownloadBuildArtifacts@0 #.206.0
-  name: 'FileShare_DownloadBuildArtifacts'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: '$(artifactName)2'
-    downloadPath: '$(System.ArtifactsDirectory)'
+- job: 'Self_Hosted'
+  condition: ${{ parameters.runselfhosted }}
+  displayName: 'Self-Hosted'  
+  pool: Default
+  strategy:
+    matrix:
+      'Artifact with + NoZip':
+        artifactName: 'drop + 9234857'
+      'Artifact with + Zip':
+        artifactName: 'drop + 9234857'
+        variables:
+          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+      #'Artifact with !':
+      #  artifactName: 'drop ! 9234857'
+      #'Artifact with @':
+      #  artifactName: 'drop @ 9234857'
+      #'Artifact with #':
+      #  artifactName: 'drop # 9234857'
+      #'Artifact with %':
+      #  artifactName: 'drop % 9234857'
+      #'Artifact with ^':
+      #  artifactName: 'drop ^ 9234857'
+      #'Artifact with :':
+      #  artifactName: 'drop : 9234857'
+      #'Artifact with ?':
+      #  artifactName: 'drop ? 9234857'
+      #'Artifact with ()':
+      #  artifactName: 'drop () 9234857'
+      #'Artifact with *':
+      #  artifactName: 'drop * 9234857'
+      #'Artifact with $':
+      #  artifactName: 'drop $ 9234857'
+      #'Artifact with -+=':
+      #  artifactName: 'drop -+= 9234857'
+      #'Artifact with /':
+      #  artifactName: 'drop / 9234857'
+      #'Artifact with \':
+      #  artifactName: 'drop \ 9234857'
+      #'Artifact with |':
+      #  artifactName: 'drop | 9234857'
+      #'Artifact with ,':
+      #  artifactName: 'drop , 9234857'
+      #'Artifact with .':
+      #  artifactName: 'drop . 9234857'
+      #'Artifact with `':
+      #  artifactName: 'drop ` 9234857'
+      #'Artifact with ~':
+      #  artifactName: 'drop ~ 9234857'
 
-# download multiple artifacts from this build
-- task: DownloadBuildArtifacts@0
-  name: 'All_DownloadBuildArtifacts'
-  condition: always()
-  timeoutInMinutes: 1
-  inputs:
-    buildType: 'current'
-    downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
 
-# download multiple artifacts from previous run of this build
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'specific'
-    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-    pipeline: '35'
-    buildVersionToDownload: 'latest'
-    allowPartiallySucceededBuilds: true
-    downloadType: 'specific'
-    downloadPath: '$(System.ArtifactsDirectory)'
 
-# download single artifact from previous run of this build
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'specific'
-    project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-    pipeline: '35'
-    buildVersionToDownload: 'latest'
-    allowPartiallySucceededBuilds: true
-    downloadType: 'single'
-    artifactName: '$(artifactName)'
-    downloadPath: '$(System.ArtifactsDirectory)'
+## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
+  steps:
+
+  # publish artifact to container
+  - task: PublishBuildArtifacts@1
+    name: 'Pipeline_PublishBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      PathtoPublish: '$(Pipeline.Workspace)'
+      ArtifactName: $(artifactName)
+      publishLocation: 'Container'
+
+  # download artifact from container
+  - task: DownloadBuildArtifacts@0 #.206.0
+    name: 'Pipeline_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'single'
+      artifactName: $(artifactName)
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # publish artifact to file path
+  - task: PublishBuildArtifacts@1
+    name: 'FileShare_PublishBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      PathtoPublish: '$(Pipeline.Workspace)'
+      ArtifactName: '$(artifactName)2'
+      publishLocation: 'FilePath'
+      TargetPath: '$(Pipeline.Workspace)'
+
+  # download artifact from file path
+  - task: DownloadBuildArtifacts@0 #.206.0
+    name: 'FileShare_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'single'
+      artifactName: '$(artifactName)2'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download multiple artifacts from this build
+  - task: DownloadBuildArtifacts@0
+    name: 'All_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
+    inputs:
+      buildType: 'current'
+      downloadType: 'specific'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download multiple artifacts from previous run of this build
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'specific'
+      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+      pipeline: '35'
+      buildVersionToDownload: 'latest'
+      allowPartiallySucceededBuilds: true
+      downloadType: 'specific'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  # download single artifact from previous run of this build
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      buildType: 'specific'
+      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
+      pipeline: '35'
+      buildVersionToDownload: 'latest'
+      allowPartiallySucceededBuilds: true
+      downloadType: 'single'
+      artifactName: '$(artifactName)'
+      downloadPath: '$(System.ArtifactsDirectory)'
