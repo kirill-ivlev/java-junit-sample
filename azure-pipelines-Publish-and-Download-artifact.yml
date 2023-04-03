@@ -108,6 +108,9 @@ jobs:
 
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifacts@0
+    name: 'All_Previous_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
       project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
@@ -119,6 +122,9 @@ jobs:
 
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifacts@0
+    name: 'Previous_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
       project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
@@ -239,6 +245,9 @@ jobs:
 
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifacts@0
+    name: 'All_Previous_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
       project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
@@ -250,6 +259,9 @@ jobs:
 
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifacts@0
+    name: 'Previous_DownloadBuildArtifacts'
+    condition: always()
+    timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
       project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
