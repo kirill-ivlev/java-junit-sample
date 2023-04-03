@@ -26,24 +26,30 @@ jobs:
   strategy:
     matrix:
       'Ubuntu NoZip':
-        imageName: 'ubuntu-latest'
+        pool:
+          vmImage: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu NoZip'
       'MacOS NoZip':
-        imageName: 'macOS-latest'
+        pool:
+          vmImage: 'macOS-latest'
         artifactName: 'drop + 9234857 MacOS NoZip'
       'Windows NoZip':
-        imageName: 'windows-latest'
+        pool:
+          vmImage: 'windows-latest'
         artifactName: 'drop + 9234857 Windows NoZip'
       'Ubuntu Zip':
-        imageName: 'ubuntu-latest'
+        pool:
+          vmImage: 'ubuntu-latest'
         artifactName: 'drop + 9234857 Ubuntu Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'MacOS Zip':
-        imageName: 'macOS-latest'
+        pool:
+          vmImage: 'macOS-latest'
         artifactName: 'drop + 9234857 MacOS Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'Windows Zip':
-        imageName: 'windows-latest'
+        pool:
+          vmImage: 'windows-latest'
         artifactName: 'drop + 9234857 Windows Zip'
         DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
