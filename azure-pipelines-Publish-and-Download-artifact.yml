@@ -35,16 +35,13 @@ jobs:
         imageName: 'windows-latest'
       'Ubuntu Zip':
         imageName: 'ubuntu-latest'
-        variables:
-          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'MacOS Zip':
         imageName: 'macOS-latest'
-        variables:
-          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
       'Windows Zip':
         imageName: 'windows-latest'
-        variables:
-          DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
+        DownloadBuildArtifacts.ForceEnableDownloadZipForCanary : 'true'
 
 
 ## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
