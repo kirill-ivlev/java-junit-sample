@@ -16,6 +16,11 @@ parameters:
   default: true
   displayName: Run Many
   type: boolean
+  # enable file path artifacts
+- name: fileshare
+  default: false
+  displayName: Enable File Path Artifacts
+  type: boolean
 
 jobs:
 
@@ -73,7 +78,7 @@ jobs:
     name: 'FileShare_PublishBuildArtifactsLiliaS'
     displayName: 'Publish To File Path'
     # file path option is only possible for Windows
-    condition: eq(variables.imageName, 'windows-latest')
+    condition: and (eq(variables.imageName, 'windows-latest'), ${{ parameters.fileshare }})
     timeoutInMinutes: 1
     inputs:
       PathtoPublish: '$(Build.SourcesDirectory)/src'
@@ -86,7 +91,7 @@ jobs:
     name: 'FileShare_DownloadBuildArtifactsLiliaS'
     displayName: 'Download From File Path'
     # file path option is only possible for Windows
-    condition: eq(variables.imageName, 'windows-latest')
+    condition: and (eq(variables.imageName, 'windows-latest'), ${{ parameters.fileshare }})
     timeoutInMinutes: 1
     inputs:
       buildType: 'current'
@@ -103,7 +108,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
-      itemPattern: 'drop/batch/**'
+      itemPattern: '**/*.yml'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -119,7 +124,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
-      itemPattern: 'drop/batch/**'
+      itemPattern: '**/*.yml'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
@@ -221,7 +226,7 @@ jobs:
   - task: PublishBuildArtifactsLiliaS@1
     name: 'FileShare_PublishBuildArtifactsLiliaS'
     displayName: 'Publish To File Path'
-    condition: always()
+    condition: ${{ parameters.fileshare }}
     timeoutInMinutes: 1
     inputs:
       PathtoPublish: '$(Build.SourcesDirectory)/src'
@@ -234,7 +239,7 @@ jobs:
   - task: DownloadBuildArtifactsLiliaS@0 #.206.0
     name: 'FileShare_DownloadBuildArtifactsLiliaS'
     displayName: 'Download From File Path'
-    condition: always()
+    condition: ${{ parameters.fileshare }}
     timeoutInMinutes: 1
     inputs:
       buildType: 'current'
@@ -251,7 +256,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
-      itemPattern: 'drop/batch/**'
+      itemPattern: '**/*.yml'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -267,7 +272,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
-      itemPattern: 'drop/batch/**'
+      itemPattern: '**/*.yml'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
