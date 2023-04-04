@@ -103,7 +103,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
-      itemPattern: 'drop + 9234857 Zip**'
+      itemPattern: 'drop/batch/**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -119,7 +119,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
-      itemPattern: 'drop + 9234857 Zip**'
+      itemPattern: 'drop/batch/**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
@@ -251,7 +251,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
-      itemPattern: 'drop + 9234857 Zip**'
+      itemPattern: 'drop/batch/**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -267,7 +267,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
-      itemPattern: 'drop + 9234857 Zip**'
+      itemPattern: 'drop/batch/**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
