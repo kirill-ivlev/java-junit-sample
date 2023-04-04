@@ -26,16 +26,16 @@ jobs:
     matrix:
       'Ubuntu NoZip':
         imageName: 'ubuntu-latest'
-        artifactName: 'drop + 9234857 Ubuntu NoZip'
+        artifactName: 'drop + 9234857 NoZip Ubuntu'
       'MacOS NoZip':
         imageName: 'macOS-latest'
-        artifactName: 'drop + 9234857 MacOS NoZip'
+        artifactName: 'drop + 9234857 NoZip MacOS'
       'Windows NoZip':
         imageName: 'windows-latest'
-        artifactName: 'drop + 9234857 Windows NoZip'
+        artifactName: 'drop + 9234857 NoZip Windows'
       'Windows Zip':
         imageName: 'windows-latest'
-        artifactName: 'drop + 9234857 Windows Zip'
+        artifactName: 'drop + 9234857 Zip Windows'
         DownloadBuildArtifactsLiliaS.ForceEnableDownloadZipForCanary : 'true'
       # zip option works only for Windows
   pool:
@@ -103,6 +103,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
+      itemPattern: 'drop + 9234857 Zip**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -118,6 +119,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
+      itemPattern: 'drop + 9234857 Zip**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
@@ -249,6 +251,7 @@ jobs:
     inputs:
       buildType: 'current'
       downloadType: 'specific'
+      itemPattern: 'drop + 9234857 Zip**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download multiple artifacts from previous run of this build
@@ -264,6 +267,7 @@ jobs:
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
+      itemPattern: 'drop + 9234857 Zip**'
       downloadPath: '$(System.ArtifactsDirectory)'
 
   # download single artifact from previous run of this build
