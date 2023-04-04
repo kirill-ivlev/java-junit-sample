@@ -2,7 +2,7 @@ trigger: none
 
 ## STEPS ARE THE SAME FOR BOTH JOBS: MS_Hosted and Self_Hosted
 
-# FIRST RUN - with default parameters, SECOND RUN - enable ALL !!!
+# FIRST RUN - with default parameters, SECOND RUN - enable moreoptions, THIRD RUN - enable fileshare !!!
 
 parameters:
 - name: runmshosted
@@ -14,13 +14,13 @@ parameters:
   displayName: Run Self-Hosted
   type: boolean
   # just more steps to run, less steps - for testing pipeline is ok
-  # FIRST RUN - with default parameters, SECOND RUN - enable ALL !!!
+  # FIRST RUN - with default parameters, SECOND RUN - enable moreoptions, THIRD RUN - enable fileshare !!!
 - name: moreoptions
   default: false
   displayName: Run Many
   type: boolean
   # enable file path artifacts
-  # FIRST RUN - with default parameters, SECOND RUN - enable ALL !!!
+  # FIRST RUN - with default parameters, SECOND RUN - enable moreoptions, THIRD RUN - enable fileshare !!!
 - name: fileshare
   default: false
   displayName: Enable File Path Artifacts
