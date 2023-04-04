@@ -107,8 +107,8 @@ jobs:
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
-      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-      pipeline: '37'
+      project: 'b93518f3-c050-4662-a4f2-174106f5081b'
+      pipeline: '217'
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
@@ -121,8 +121,8 @@ jobs:
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
-      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-      pipeline: '37'
+      project: 'b93518f3-c050-4662-a4f2-174106f5081b'
+      pipeline: '217'
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'single'
@@ -246,8 +246,8 @@ jobs:
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
-      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-      pipeline: '37'
+      project: 'b93518f3-c050-4662-a4f2-174106f5081b'
+      pipeline: '217'
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'specific'
@@ -260,8 +260,8 @@ jobs:
     timeoutInMinutes: 1
     inputs:
       buildType: 'specific'
-      project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
-      pipeline: '37'
+      project: 'b93518f3-c050-4662-a4f2-174106f5081b'
+      pipeline: '217'
       buildVersionToDownload: 'latest'
       allowPartiallySucceededBuilds: true
       downloadType: 'single'
