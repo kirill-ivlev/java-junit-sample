@@ -48,6 +48,7 @@ jobs:
   # publish artifact to container
   - task: PublishBuildArtifactsLiliaS@1
     name: 'Pipeline_PublishBuildArtifactsLiliaS'
+    displayName: 'Publish To Container'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -58,6 +59,7 @@ jobs:
   # download artifact from container
   - task: DownloadBuildArtifactsLiliaS@0 #.206.0
     name: 'Pipeline_DownloadBuildArtifactsLiliaS'
+    displayName: 'Download From Container'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -69,6 +71,7 @@ jobs:
   # publish artifact to file path
   - task: PublishBuildArtifactsLiliaS@1
     name: 'FileShare_PublishBuildArtifactsLiliaS'
+    displayName: 'Publish To File Path'
     # file path option is only possible for Windows
     condition: eq(variables.imageName, 'windows-latest')
     timeoutInMinutes: 1
@@ -81,6 +84,7 @@ jobs:
   # download artifact from file path
   - task: DownloadBuildArtifactsLiliaS@0 #.206.0
     name: 'FileShare_DownloadBuildArtifactsLiliaS'
+    displayName: 'Download From File Path'
     # file path option is only possible for Windows
     condition: eq(variables.imageName, 'windows-latest')
     timeoutInMinutes: 1
@@ -93,6 +97,7 @@ jobs:
   # download multiple artifacts from this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'All_DownloadBuildArtifactsLiliaS'
+    displayName: 'Multiple Download From This Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
@@ -103,6 +108,7 @@ jobs:
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'All_Previous_DownloadBuildArtifactsLiliaS'
+    displayName: 'Multiple Download From Other Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
@@ -117,6 +123,7 @@ jobs:
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'Previous_DownloadBuildArtifactsLiliaS'
+    displayName: 'Single Download From Other Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
@@ -187,6 +194,7 @@ jobs:
   # publish artifact to container
   - task: PublishBuildArtifactsLiliaS@1
     name: 'Pipeline_PublishBuildArtifactsLiliaS'
+    displayName: 'Publish To Container'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -197,6 +205,7 @@ jobs:
   # download artifact from container
   - task: DownloadBuildArtifactsLiliaS@0 #.206.0
     name: 'Pipeline_DownloadBuildArtifactsLiliaS'
+    displayName: 'Download From Container'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -209,6 +218,7 @@ jobs:
   # file path option is only possible for Windows
   - task: PublishBuildArtifactsLiliaS@1
     name: 'FileShare_PublishBuildArtifactsLiliaS'
+    displayName: 'Publish To File Path'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -221,6 +231,7 @@ jobs:
   # file path option is only possible for Windows
   - task: DownloadBuildArtifactsLiliaS@0 #.206.0
     name: 'FileShare_DownloadBuildArtifactsLiliaS'
+    displayName: 'Download From File Path'
     condition: always()
     timeoutInMinutes: 1
     inputs:
@@ -232,6 +243,7 @@ jobs:
   # download multiple artifacts from this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'All_DownloadBuildArtifactsLiliaS'
+    displayName: 'Multiple Download From This Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
@@ -242,6 +254,7 @@ jobs:
   # download multiple artifacts from previous run of this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'All_Previous_DownloadBuildArtifactsLiliaS'
+    displayName: 'Multiple Download From Other Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
@@ -256,6 +269,7 @@ jobs:
   # download single artifact from previous run of this build
   - task: DownloadBuildArtifactsLiliaS@0
     name: 'Previous_DownloadBuildArtifactsLiliaS'
+    displayName: 'Single Download From Other Build'
     condition: and (always(), ${{ parameters.moreoptions }})
     timeoutInMinutes: 1
     inputs:
