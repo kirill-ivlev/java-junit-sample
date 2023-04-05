@@ -1,9 +1,7 @@
 trigger: none
 
 pool: 
-  name: Default
-  demands:
-    - agent.name -equals TestBuildArt
+  vmImage: 'ubuntu-latest'
 
 #pool: 
 #    vmImage: 'macos-latest'
