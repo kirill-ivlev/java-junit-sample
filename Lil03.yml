@@ -55,7 +55,7 @@ strategy:
 steps:
 
 # publish artifact to container
-- task: PublishBuildArtifactsLil03@1
+- task: PublishBuildArtifacts@1
   name: 'Pipeline_PublishBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -65,7 +65,7 @@ steps:
     publishLocation: 'Container'
 
 # download artifact from container
-- task: DownloadBuildArtifactsLil03@0 #.206.0
+- task: DownloadBuildArtifacts@0 #.206.0
   name: 'Pipeline_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -90,7 +90,7 @@ steps:
 
 
 # publish artifact to file path
-- task: PublishBuildArtifactsLil03@1
+- task: PublishBuildArtifacts@1
   name: 'FileShare_PublishBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -101,7 +101,7 @@ steps:
     TargetPath: '$(Pipeline.Workspace)'
 
 # download artifact from file path
-- task: DownloadBuildArtifactsLil03@0 #.206.0
+- task: DownloadBuildArtifacts@0 #.206.0
   name: 'FileShare_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -112,7 +112,7 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 
 # download multiple artifacts from this build
-- task: DownloadBuildArtifactsLil03@0
+- task: DownloadBuildArtifacts@0
   name: 'All_DownloadBuildArtifacts'
   condition: always()
   timeoutInMinutes: 1
@@ -122,7 +122,7 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 
 # download multiple artifacts from previous run of this build
-- task: DownloadBuildArtifactsLil03@0
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
     project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
@@ -133,7 +133,7 @@ steps:
     downloadPath: '$(System.ArtifactsDirectory)'
 
 # download single artifact from previous run of this build
-- task: DownloadBuildArtifactsLil03@0
+- task: DownloadBuildArtifacts@0
   inputs:
     buildType: 'specific'
     project: '3e0295ab-3dd6-43ce-86af-16273f5f1b23'
